@@ -1,5 +1,5 @@
 # To-do-list
-i had used flask API,SQLite,Jinja2(as templating engine),python,bootstrap,html,css to build a simple To-do list website.
+I had used flask API,SQLite,Jinja2(as templating engine),python,bootstrap,html,css to build a simple To-do list website.
 
 
 It can do all CRUD opreations
