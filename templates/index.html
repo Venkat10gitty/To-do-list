@@ -1,0 +1,74 @@
+<!--child class-->
+
+<!--inheriting parent class index-->
+{% extends 'base.html' %} 
+{% block title %} Home{% endblock title %} 
+
+<!--this block will have form to ender data and todo descrition-->
+{% block body %}
+    <div class="container my-5" style="background-color: aquamarine;">
+        <center><h2 style="color: blueviolet;"> ADD YOUR TO-DO</h2></center>
+        <form action="/" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">To-Do Title</label>
+                <input type="text" class="form-control" name="title" id="title">
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">TO-DO description</label>
+                <input type="text" class="form-control" name="desc" id="desc">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+
+    <div class="container my-3" style="background-color:blanchedalmond;"><!--my-3 means space of size 3 in y direction-->
+        <center><h2 style="color: blueviolet;"> ENTER YOUR TO-DO</h2></center>
+
+
+
+                {% if allTodo|length ==0 %}<!-- This will display when there are no todo, else the normal code will work-->
+
+                <div class="alert alert-danger" role="alert">
+                    NO Todo's found!! ADD YOUR FIRST ONE !!
+                  </div>
+                    
+                    {% else %}
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">Sno</th>
+                            <th scope="col">Title</th>
+                            <th scope="col">Description</th>
+                            <th scope="col">Time</th>
+                            <th scope="col">Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                    
+                {% for todo in allTodo %}
+               
+                 <tr>
+                    <th scope="row">{{loop.index}}</th><!--refer imp_points 4th point to know why we dint used {{todo.sr}} -->
+                    <td>{{todo.title}}</td>
+                    <td>{{todo.desc}}</td>
+                    <td>{{todo.date_created}}</td>
+                    <td><a href="/delete/{{todo.sno}}" type="button" class="btn btn-outline-danger btn-sm mx-1">Delete</button>
+                        <a href="/update/{{todo.sno}}" type="button" class="btn btn-outline-success btn-sm mx-1">Update</button>
+                    </td>
+                </tr>
+                    
+                {% endfor %}
+            </tbody>
+        </table>
+        {% endif %}
+
+              
+   
+          
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+
+{% endblock body %}

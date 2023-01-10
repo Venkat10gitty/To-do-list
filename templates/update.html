@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %} Home{% endblock title %} 
+
+<!--this block will have form to ender data and todo descrition-->
+{% block body %}
+    <div class="container my-5" style="background-color: aquamarine;">
+        <center><h2 style="color: blueviolet;"> UPDATE YOUR TO-DO</h2></center>
+        <form action="/update/{{todo.sno}}" method="POST">
+            <div class="mb-3">
+                <label for="title" class="form-label">To-Do Title</label>
+                <input type="text" class="form-control" name="title" value="{{todo.title}}" id="title">
+            </div>
+            <div class="mb-3">
+                <label for="desc" class="form-label">TO-DO description</label>
+                <input type="text" class="form-control" name="desc" value="{{todo.desc}}" id="desc">
+            </div>
+            <button type="submit" class="btn btn-primary">Update</button>
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0"
+        crossorigin="anonymous"></script>
+
+
+{% endblock body %}
