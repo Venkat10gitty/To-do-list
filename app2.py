@@ -60,10 +60,12 @@ def update_fun(sno):
         todo.desc=desc
         db.session.add(todo)#adding the row into database
         db.session.commit()
+        db.session.close()
         return redirect("/")
 
     todo=Todo.query.filter_by(sno=sno).first()#selecting the record according the sno
     return render_template('update.html',todo=todo)
+
 
     
 #now we are asking app to run
